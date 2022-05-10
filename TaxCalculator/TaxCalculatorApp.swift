@@ -11,7 +11,20 @@ import SwiftUI
 struct TaxCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            CalculatorView()
+            NavigationView {
+                TabView {
+                    CalculatorView()
+                        .tabItem({
+                            Image(systemName: "dollarsign.circle")
+                            Text("Calculator")
+                        })
+                    HistoryView()
+                        .tabItem({
+                            Image(systemName: "cart")
+                            Text("History")
+                        })
+                }
+            }
         }
     }
 }
