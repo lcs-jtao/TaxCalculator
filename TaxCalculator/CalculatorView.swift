@@ -33,6 +33,23 @@ struct CalculatorView: View {
             })
             
             Section(content: {
+                Picker(selection: .constant(""),
+                       label: Text("Category"),
+                       content: {
+                    Text("Grocery").tag(0).font(.body)
+                    Text("Clothing").tag(1).font(.body)
+                    Text("Personal Care").tag(2).font(.body)
+                    Text("Education").tag(3).font(.body)
+                    Text("Household").tag(4).font(.body)
+                })
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(width: 200, height: 30)
+                    .clipped()
+            }, header: {
+                Text("Select item category")
+            })
+            
+            Section(content: {
                 Text("HST: 13.0%")
             }, header: {
                 Text("Applied Tax Rate")
@@ -51,10 +68,18 @@ struct CalculatorView: View {
                 HStack {
                     Text("CAD")
                     Text("33.89")
+                    Spacer()
+                    Button(action: {
+                        print("Button was pressed")
+                    }, label: {
+                        Text("Save")
+                    })
+                        .buttonStyle(.bordered)
                 }
             }, header: {
                 Text("Price after taxes")
             })
+
         }
         .navigationTitle("Tax Calculator")
     }
