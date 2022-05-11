@@ -10,20 +10,22 @@ import SwiftUI
 struct CalculatorView: View {
     
     // MARK: Stored properties
+    // What province was selected
+    @State var selectedProvince: Jurisdiction = Jurisdiction(name: "Ontario",
+                                                        combinedTaxRate: 0.13,
+                                                        taxDescription: "HST")
     
     // MARK: Computed properties
     var body: some View {
         Form {
             
             Section(content: {
-                Picker(selection: .constant(""),
+                Picker(selection: $selectedProvince,
                        label: Text("Province"),
                        content: {
-                    Text("Alberta").tag(0).font(.body)
-                    Text("British Columbia").tag(1).font(.body)
-                    Text("Manitoba").tag(2).font(.body)
-                    Text("Ontario").tag(3).font(.body)
-                    Text("Prince Edward Island").tag(4).font(.body)
+                    ForEach(provinces, id: \.self) { currentProvince in
+                        Text(currentProvince.name).tag(currentProvince).font(.body)
+                    }
                 })
                     .pickerStyle(WheelPickerStyle())
                     .frame(width: 200, height: 30)
@@ -50,7 +52,7 @@ struct CalculatorView: View {
             })
             
             Section(content: {
-                Text("HST: 13.0%")
+                Text("\(selectedProvince.taxDescription): \(selectedProvince.combinedTaxRate * 100, specifier: "%.1f") %")
             }, header: {
                 Text("Applied Tax Rate")
             })
