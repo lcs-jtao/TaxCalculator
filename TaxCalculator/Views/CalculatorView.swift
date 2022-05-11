@@ -15,6 +15,7 @@ struct CalculatorView: View {
                                                         combinedTaxRate: 0.13,
                                                         taxDescription: "HST")
     @State var inputPrice = ""
+    @State var expenseSaved = false
     
     // MARK: Computed properties
     var preTaxPrice: Double? {
@@ -97,12 +98,16 @@ struct CalculatorView: View {
                 HStack {
                     Text(outputPrice)
                     Spacer()
-                    Button(action: {
-                        print("Button was pressed")
-                    }, label: {
-                        Text("Save")
-                    })
-                        .buttonStyle(.bordered)
+                    ZStack {
+                        Button(action: {
+                            expenseSaved = true
+                            inputPrice = ""
+                        }, label: {
+                            Text("Save")
+                        })
+                            .buttonStyle(.bordered)
+                            .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
+                    }
                 }
             }, header: {
                 Text("Price after taxes")
