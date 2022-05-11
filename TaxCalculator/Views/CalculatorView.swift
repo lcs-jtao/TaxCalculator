@@ -28,7 +28,7 @@ struct CalculatorView: View {
                     }
                 })
                     .pickerStyle(WheelPickerStyle())
-                    .frame(width: 200, height: 30)
+                    .frame(width: UIScreen.main.bounds.width - 30, height: 30)
                     .clipped()
             }, header : {
                 Text("Select Jurisdiction")
@@ -45,14 +45,14 @@ struct CalculatorView: View {
                     Text("Household").tag(4).font(.body)
                 })
                     .pickerStyle(WheelPickerStyle())
-                    .frame(width: 200, height: 30)
+                    .frame(width: UIScreen.main.bounds.width - 30, height: 30)
                     .clipped()
             }, header: {
                 Text("Select item category")
             })
             
             Section(content: {
-                Text("\(selectedProvince.taxDescription): \(selectedProvince.combinedTaxRate * 100, specifier: "%.1f") %")
+                Text("\(selectedProvince.taxDescription): \(selectedProvince.combinedTaxRate * 100, specifier: "%.1f")%")
             }, header: {
                 Text("Applied Tax Rate")
             })
