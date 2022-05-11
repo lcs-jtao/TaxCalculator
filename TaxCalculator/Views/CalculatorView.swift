@@ -14,8 +14,35 @@ struct CalculatorView: View {
     @State var selectedProvince: Jurisdiction = Jurisdiction(name: "Ontario",
                                                         combinedTaxRate: 0.13,
                                                         taxDescription: "HST")
+    @State var inputPrice = ""
     
     // MARK: Computed properties
+    var preTaxPrice: Double? {
+        guard let preTaxPrice = Double(inputPrice),
+              preTaxPrice > 0
+        else {
+            return nil
+        }
+        return preTaxPrice
+    }
+    
+    var postTaxPrice: Double? {
+        guard let preTaxPrice = preTaxPrice
+        else {
+            return nil
+        }
+        return preTaxPrice * (1 + selectedProvince.combinedTaxRate)
+    }
+    
+    var outputPrice: String {
+        if let postTaxPrice = postTaxPrice {
+            let formattedValue = String(format: "%.2f", postTaxPrice)
+            return "CAD \(formattedValue)"
+        } else {
+            return "Cannot currently be computed."
+        }
+    }
+    
     var body: some View {
         Form {
             
@@ -60,7 +87,7 @@ struct CalculatorView: View {
             Section(content: {
                 HStack {
                     Text("CAD")
-                    TextField("", text: .constant(""), prompt: Text("Enter numerical value"))
+                    TextField("", text: $inputPrice, prompt: Text("Enter numerical value"))
                 }
             }, header: {
                 Text("Price before taxes")
@@ -68,8 +95,7 @@ struct CalculatorView: View {
             
             Section(content: {
                 HStack {
-                    Text("CAD")
-                    Text("33.89")
+                    Text(outputPrice)
                     Spacer()
                     Button(action: {
                         print("Button was pressed")
