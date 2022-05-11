@@ -22,11 +22,11 @@ let provinces = [
     ,
     Jurisdiction(name: "British Columbia",
                  combinedTaxRate: 0.12,
-                 taxDescription: "PST (7.0%) + GST (5.0%)")
+                 taxDescription: "PST(7.0%) + GST(5.0%)")
     ,
     Jurisdiction(name: "Manitoba",
                  combinedTaxRate: 0.12,
-                 taxDescription: "PST (7.0%) + GST (5.0%)")
+                 taxDescription: "PST(7.0%) + GST(5.0%)")
     ,
     Jurisdiction(name: "Newfoundland and Labrador",
                  combinedTaxRate: 0.13,
@@ -46,15 +46,15 @@ let provinces = [
     ,
     Jurisdiction(name: "Prince Edward Island",
                  combinedTaxRate: 0.15,
-                 taxDescription: "PST (10.0%) + GST (5.0%)")
+                 taxDescription: "PST(10.0%) + GST(5.0%)")
     ,
     Jurisdiction(name: "Quebec",
                  combinedTaxRate: 0.145,
-                 taxDescription: "PST (9.5%) + GST (5.0%)")
+                 taxDescription: "PST(9.5%) + GST(5.0%)")
     ,
     Jurisdiction(name: "Saskatchewan",
                  combinedTaxRate: 0.10,
-                 taxDescription: "PST (5.0%) + GST (5.0%)")
+                 taxDescription: "PST(5.0%) + GST(5.0%)")
     ,
     Jurisdiction(name: "Northwest Territories",
                  combinedTaxRate: 0.05,
