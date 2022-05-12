@@ -102,7 +102,11 @@ struct CalculatorView: View {
                         expenseSaved = true
                         inputPrice = ""
                     }, label: {
-                        Text("Save")
+                        HStack {
+                            Text("Save")
+                            Image(systemName: "checkmark.icloud")
+                        }
+                        .foregroundColor(.blue)
                     })
                         .buttonStyle(.bordered)
                         .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
