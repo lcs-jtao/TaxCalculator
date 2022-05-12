@@ -98,16 +98,14 @@ struct CalculatorView: View {
                 HStack {
                     Text(outputPrice)
                     Spacer()
-                    ZStack {
-                        Button(action: {
-                            expenseSaved = true
-                            inputPrice = ""
-                        }, label: {
-                            Text("Save")
-                        })
-                            .buttonStyle(.bordered)
-                            .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
-                    }
+                    Button(action: {
+                        expenseSaved = true
+                        inputPrice = ""
+                    }, label: {
+                        Text("Save")
+                    })
+                        .buttonStyle(.bordered)
+                        .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
                 }
             }, header: {
                 Text("Price after taxes")
