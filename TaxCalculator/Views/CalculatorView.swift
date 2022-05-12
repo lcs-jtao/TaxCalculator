@@ -47,88 +47,90 @@ struct CalculatorView: View {
     }
     
     var body: some View {
-        Form {
-            
-            Section(content: {
-                Picker(selection: $selectedProvince,
-                       label: Text("Province"),
-                       content: {
-                    ForEach(provinces, id: \.self) { currentProvince in
-                        Text(currentProvince.name).tag(currentProvince).font(.body)
-                    }
+        NavigationView {
+            Form {
+                
+                Section(content: {
+                    Picker(selection: $selectedProvince,
+                           label: Text("Province"),
+                           content: {
+                        ForEach(provinces, id: \.self) { currentProvince in
+                            Text(currentProvince.name).tag(currentProvince).font(.body)
+                        }
+                    })
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 30)
+                        .clipped()
+                }, header : {
+                    Text("Select Jurisdiction")
                 })
-                    .pickerStyle(WheelPickerStyle())
-                    .frame(width: UIScreen.main.bounds.width - 30, height: 30)
-                    .clipped()
-            }, header : {
-                Text("Select Jurisdiction")
-            })
-            
-            Section(content: {
-                Picker(selection: $selectedCategory,
-                       label: Text("Category"),
-                       content: {
-                    ForEach(listOfCategories, id: \.self) { currentCategory in
-                        Text(currentCategory.name).tag(currentCategory)
-                            .font(.body)
-                    }
+                
+                Section(content: {
+                    Picker(selection: $selectedCategory,
+                           label: Text("Category"),
+                           content: {
+                        ForEach(listOfCategories, id: \.self) { currentCategory in
+                            Text(currentCategory.name).tag(currentCategory)
+                                .font(.body)
+                        }
+                    })
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 30)
+                        .clipped()
+                }, header: {
+                    Text("Select item category")
                 })
-                    .pickerStyle(WheelPickerStyle())
-                    .frame(width: UIScreen.main.bounds.width - 30, height: 30)
-                    .clipped()
-            }, header: {
-                Text("Select item category")
-            })
-            
-            Section(content: {
-                Text("\(selectedProvince.taxDescription): \(selectedProvince.combinedTaxRate * 100, specifier: "%.1f")%")
-            }, header: {
-                Text("Applied Tax Rate")
-            })
-            
-            Section(content: {
-                HStack {
-                    Text("CAD")
-                    TextField("", text: $inputPrice, prompt: Text("Enter numerical value"))
-                }
-            }, header: {
-                Text("Price before taxes")
-            })
-            
-            Section(content: {
-                HStack {
-                    Text(outputPrice)
-                    Spacer()
-                    ZStack {
-                        Button(action: {
-                            expenseSaved = true
-                            saveExpense()
-                        }, label: {
-                            HStack {
-                                Text("Save")
-                                Image(systemName: "checkmark.icloud")
-                            }
-                            .foregroundColor(.blue)
-                        })
-                            .buttonStyle(.bordered)
-                            .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
-                        Button(action: {
-                            inputPrice = ""
-                            expenseSaved = false
-                        }, label: {
-                            Text("Clear")
+                
+                Section(content: {
+                    Text("\(selectedProvince.taxDescription): \(selectedProvince.combinedTaxRate * 100, specifier: "%.1f")%")
+                }, header: {
+                    Text("Applied Tax Rate")
+                })
+                
+                Section(content: {
+                    HStack {
+                        Text("CAD")
+                        TextField("", text: $inputPrice, prompt: Text("Enter numerical value"))
+                    }
+                }, header: {
+                    Text("Price before taxes")
+                })
+                
+                Section(content: {
+                    HStack {
+                        Text(outputPrice)
+                        Spacer()
+                        ZStack {
+                            Button(action: {
+                                expenseSaved = true
+                                saveExpense()
+                            }, label: {
+                                HStack {
+                                    Text("Save")
+                                    Image(systemName: "checkmark.icloud")
+                                }
                                 .foregroundColor(.blue)
-                        })
-                            .buttonStyle(.bordered)
-                            .opacity(expenseSaved == true ? 1.0 : 0.0)
+                            })
+                                .buttonStyle(.bordered)
+                                .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
+                            Button(action: {
+                                inputPrice = ""
+                                expenseSaved = false
+                            }, label: {
+                                Text("Clear")
+                                    .foregroundColor(.blue)
+                            })
+                                .buttonStyle(.bordered)
+                                .opacity(expenseSaved == true ? 1.0 : 0.0)
+                        }
                     }
-                }
-            }, header: {
-                Text("Price after taxes")
-            })
+                }, header: {
+                    Text("Price after taxes")
+                })
 
+            }
+            .navigationTitle("Tax Calculator")
         }
-        .navigationTitle("Tax Calculator")
     }
     
     // MARK: Functions
@@ -143,8 +145,6 @@ struct CalculatorView: View {
 
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            CalculatorView(expenses: .constant([]))
-        }
+        CalculatorView(expenses: .constant([]))
     }
 }

@@ -16,19 +16,17 @@ struct TaxCalculatorApp: App {
     // MARK: Computed property
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                TabView {
-                    CalculatorView(expenses: $expenses)
-                        .tabItem({
-                            Image(systemName: "dollarsign.circle")
-                            Text("Calculator")
-                        })
-                    HistoryView(expenses: $expenses)
-                        .tabItem({
-                            Image(systemName: "cart")
-                            Text("History")
-                        })
-                }
+            TabView {
+                CalculatorView(expenses: $expenses)
+                    .tabItem({
+                        Image(systemName: "dollarsign.circle")
+                        Text("Calculator")
+                    })
+                HistoryView(expenses: $expenses)
+                    .tabItem({
+                        Image(systemName: "cart")
+                        Text("History")
+                    })
             }
         }
     }

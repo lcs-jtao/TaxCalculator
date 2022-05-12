@@ -14,23 +14,23 @@ struct HistoryView: View {
     
     // MARK: Computed property
     var body: some View {
-        List {
-            ForEach(listOfCategories) { currentCategory in
-                NavigationLink(destination: {
-                    ExpensesListView(expenses: $expenses, category: currentCategory.name)
-                }, label: {
-                    Text(currentCategory.name)
-                })
+        NavigationView {
+            List {
+                ForEach(listOfCategories) { currentCategory in
+                    NavigationLink(destination: {
+                        ExpensesListView(expenses: $expenses, category: currentCategory.name)
+                    }, label: {
+                        Text(currentCategory.name)
+                    })
+                }
             }
+            .navigationTitle("Expense History")
         }
-        .navigationTitle("Expense History")
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            HistoryView(expenses: .constant([]))
-        }
+        HistoryView(expenses: .constant([]))
     }
 }
