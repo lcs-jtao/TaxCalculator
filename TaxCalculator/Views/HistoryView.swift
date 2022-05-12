@@ -20,7 +20,10 @@ struct HistoryView: View {
                     NavigationLink(destination: {
                         ExpensesListView(expenses: $expenses, category: currentCategory.name)
                     }, label: {
-                        Text(currentCategory.name)
+                        HStack {
+                            Text(currentCategory.name)
+                            Image(systemName: currentCategory.image)
+                        }
                     })
                 }
             }

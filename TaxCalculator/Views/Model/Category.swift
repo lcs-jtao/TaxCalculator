@@ -10,16 +10,17 @@ import Foundation
 struct Category: Identifiable, Hashable {
     let id = UUID()
     let name: String
+    let image: String
 }
 
 let listOfCategories = [
-    Category(name: "Grocery")
+    Category(name: "Grocery", image: "cart")
     ,
-    Category(name: "Clothing")
+    Category(name: "Clothing", image: "tag")
     ,
-    Category(name: "Personal Care")
+    Category(name: "Personal Care", image: "eyebrow")
     ,
-    Category(name: "Education")
+    Category(name: "Education", image: "books.vertical")
     ,
-    Category(name: "Household")
+    Category(name: "Household", image: "bed.double")
 ]

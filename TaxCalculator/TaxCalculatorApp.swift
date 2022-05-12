@@ -24,7 +24,7 @@ struct TaxCalculatorApp: App {
                     })
                 HistoryView(expenses: $expenses)
                     .tabItem({
-                        Image(systemName: "cart")
+                        Image(systemName: "bag.badge.plus")
                         Text("History")
                     })
             }
