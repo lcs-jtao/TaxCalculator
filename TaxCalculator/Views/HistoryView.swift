@@ -11,27 +11,27 @@ struct HistoryView: View {
     var body: some View {
         List {
             NavigationLink(destination: {
-                DetailView()
+                ExpensesListView(expenses: .constant([]))
             }, label: {
                 Text("Grocery")
             })
             NavigationLink(destination: {
-                DetailView()
+                ExpensesListView(expenses: .constant([]))
             }, label: {
                 Text("Clothing")
             })
             NavigationLink(destination: {
-                DetailView()
+                ExpensesListView(expenses: .constant([]))
             }, label: {
                 Text("Personal Care")
             })
             NavigationLink(destination: {
-                DetailView()
+                ExpensesListView(expenses: .constant([]))
             }, label: {
                 Text("Education")
             })
             NavigationLink(destination: {
-                DetailView()
+                ExpensesListView(expenses: .constant([]))
             }, label: {
                 Text("Household")
             })
