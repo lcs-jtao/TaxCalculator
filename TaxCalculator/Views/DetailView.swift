@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    // MARK: Stored properties
+    let expense: Expense
+    
+    // MARK: Computed property
     var body: some View {
-        List {
-            VStack(alignment: .leading) {
-                Text("2022/05/09")
-                    .bold()
-                Text("Original Price: $29.99")
-                    .font(.subheadline)
-                Text("Price with Tax: $33.89")
-                    .font(.subheadline)
-            }
+        VStack(alignment: .leading) {
+            Text(expense.date)
+                .bold()
+            Text("Original Price: $\(expense.preTaxPrice)")
+                .font(.subheadline)
+            Text("Price with Tax: $\(expense.postTaxPrice)")
+                .font(.subheadline)
         }
-        .navigationTitle("History")
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            DetailView()
+        List {
+            DetailView(expense: sampleExpense)
         }
     }
 }
