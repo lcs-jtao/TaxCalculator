@@ -17,9 +17,9 @@ struct DetailView: View {
         VStack(alignment: .leading) {
             Text(expense.date)
                 .bold()
-            Text("Original Price: $\(expense.preTaxPrice)")
+            Text("Original Price: $\(expense.preTaxPrice, specifier: "%.2f")")
                 .font(.subheadline)
-            Text("Price with Tax: $\(expense.postTaxPrice)")
+            Text("Price with Tax: $\(expense.postTaxPrice, specifier: "%.2f")")
                 .font(.subheadline)
         }
     }
