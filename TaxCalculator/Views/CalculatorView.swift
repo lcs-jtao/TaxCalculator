@@ -14,8 +14,10 @@ struct CalculatorView: View {
     @State var selectedProvince: Jurisdiction = Jurisdiction(name: "Ontario",
                                                         combinedTaxRate: 0.13,
                                                         taxDescription: "HST")
+    @State var selectedCategory = ""
     @State var inputPrice = ""
     @State var expenseSaved = false
+    @Binding var expenses: [Expense]
     
     // MARK: Computed properties
     var preTaxPrice: Double? {
@@ -63,7 +65,7 @@ struct CalculatorView: View {
             })
             
             Section(content: {
-                Picker(selection: .constant(""),
+                Picker(selection: $selectedCategory,
                        label: Text("Category"),
                        content: {
                     Text("Grocery").tag(0).font(.body)
@@ -118,12 +120,21 @@ struct CalculatorView: View {
         }
         .navigationTitle("Tax Calculator")
     }
+    
+    // MARK: Functions
+    func saveExpense() {
+        let newExpense = Expense(category: selectedCategory,
+                                 date: DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short),
+                                 preTaxPrice: preTaxPrice!,
+                                 postTaxPrice: postTaxPrice!)
+        expenses.insert(newExpense, at: 0)
+    }
 }
 
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CalculatorView()
+            CalculatorView(expenses: .constant([]))
         }
     }
 }

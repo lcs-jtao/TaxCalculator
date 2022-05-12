@@ -13,7 +13,7 @@ struct TaxCalculatorApp: App {
         WindowGroup {
             NavigationView {
                 TabView {
-                    CalculatorView()
+                    CalculatorView(expenses: .constant([]))
                         .tabItem({
                             Image(systemName: "dollarsign.circle")
                             Text("Calculator")
