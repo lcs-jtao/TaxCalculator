@@ -9,16 +9,21 @@ import SwiftUI
 
 @main
 struct TaxCalculatorApp: App {
+    
+    // MARK: Stored properties
+    @State var expenses: [Expense] = []
+    
+    // MARK: Computed property
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 TabView {
-                    CalculatorView(expenses: .constant([]))
+                    CalculatorView(expenses: $expenses)
                         .tabItem({
                             Image(systemName: "dollarsign.circle")
                             Text("Calculator")
                         })
-                    HistoryView()
+                    HistoryView(expenses: $expenses)
                         .tabItem({
                             Image(systemName: "cart")
                             Text("History")

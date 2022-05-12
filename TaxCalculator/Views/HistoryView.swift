@@ -8,30 +8,35 @@
 import SwiftUI
 
 struct HistoryView: View {
+    
+    // MARK: Stored properties
+    @Binding var expenses: [Expense]
+    
+    // MARK: Computed property
     var body: some View {
         List {
             NavigationLink(destination: {
-                ExpensesListView(expenses: .constant([]))
+                ExpensesListView(expenses: $expenses)
             }, label: {
                 Text("Grocery")
             })
             NavigationLink(destination: {
-                ExpensesListView(expenses: .constant([]))
+                ExpensesListView(expenses: $expenses)
             }, label: {
                 Text("Clothing")
             })
             NavigationLink(destination: {
-                ExpensesListView(expenses: .constant([]))
+                ExpensesListView(expenses: $expenses)
             }, label: {
                 Text("Personal Care")
             })
             NavigationLink(destination: {
-                ExpensesListView(expenses: .constant([]))
+                ExpensesListView(expenses: $expenses)
             }, label: {
                 Text("Education")
             })
             NavigationLink(destination: {
-                ExpensesListView(expenses: .constant([]))
+                ExpensesListView(expenses: $expenses)
             }, label: {
                 Text("Household")
             })
@@ -43,7 +48,7 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HistoryView()
+            HistoryView(expenses: .constant([]))
         }
     }
 }
