@@ -46,10 +46,10 @@
 			isa = PBXGroup;
 			children = (
 				6C524663282BF80400A97EE8 /* Model */,
-				6C5246602829E7A100A97EE8 /* DetailView.swift */,
-				6C52465E2829E6A500A97EE8 /* HistoryView.swift */,
 				6C777DA728299A000014F326 /* CalculatorView.swift */,
+				6C52465E2829E6A500A97EE8 /* HistoryView.swift */,
 				6C52466A282C970400A97EE8 /* ExpensesListView.swift */,
+				6C5246602829E7A100A97EE8 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

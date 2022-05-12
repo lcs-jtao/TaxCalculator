@@ -100,19 +100,29 @@ struct CalculatorView: View {
                 HStack {
                     Text(outputPrice)
                     Spacer()
-                    Button(action: {
-                        expenseSaved = true
-                        saveExpense()
-                        inputPrice = ""
-                    }, label: {
-                        HStack {
-                            Text("Save")
-                            Image(systemName: "checkmark.icloud")
-                        }
-                        .foregroundColor(.blue)
-                    })
-                        .buttonStyle(.bordered)
-                        .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
+                    ZStack {
+                        Button(action: {
+                            expenseSaved = true
+                            saveExpense()
+                        }, label: {
+                            HStack {
+                                Text("Save")
+                                Image(systemName: "checkmark.icloud")
+                            }
+                            .foregroundColor(.blue)
+                        })
+                            .buttonStyle(.bordered)
+                            .opacity(expenseSaved == true || preTaxPrice == nil ? 0.0 : 1.0)
+                        Button(action: {
+                            inputPrice = ""
+                            expenseSaved = false
+                        }, label: {
+                            Text("Clear")
+                                .foregroundColor(.blue)
+                        })
+                            .buttonStyle(.bordered)
+                            .opacity(expenseSaved == true ? 1.0 : 0.0)
+                    }
                 }
             }, header: {
                 Text("Price after taxes")
