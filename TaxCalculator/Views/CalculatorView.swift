@@ -102,6 +102,7 @@ struct CalculatorView: View {
                     Spacer()
                     Button(action: {
                         expenseSaved = true
+                        saveExpense()
                         inputPrice = ""
                     }, label: {
                         HStack {
