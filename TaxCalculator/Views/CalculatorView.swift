@@ -91,6 +91,7 @@ struct CalculatorView: View {
                     HStack {
                         Text("CAD")
                         TextField("", text: $inputPrice, prompt: Text("Enter numerical value"))
+                            .foregroundColor(preTaxPrice == nil ? Color.red : Color.primary)
                     }
                 }, header: {
                     Text("Price before taxes")
