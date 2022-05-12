@@ -15,31 +15,13 @@ struct HistoryView: View {
     // MARK: Computed property
     var body: some View {
         List {
-            NavigationLink(destination: {
-                ExpensesListView(expenses: $expenses)
-            }, label: {
-                Text("Grocery")
-            })
-            NavigationLink(destination: {
-                ExpensesListView(expenses: $expenses)
-            }, label: {
-                Text("Clothing")
-            })
-            NavigationLink(destination: {
-                ExpensesListView(expenses: $expenses)
-            }, label: {
-                Text("Personal Care")
-            })
-            NavigationLink(destination: {
-                ExpensesListView(expenses: $expenses)
-            }, label: {
-                Text("Education")
-            })
-            NavigationLink(destination: {
-                ExpensesListView(expenses: $expenses)
-            }, label: {
-                Text("Household")
-            })
+            ForEach(listOfCategories) { currentCategory in
+                NavigationLink(destination: {
+                    ExpensesListView(expenses: $expenses, category: currentCategory.name)
+                }, label: {
+                    Text(currentCategory.name)
+                })
+            }
         }
         .navigationTitle("Expense History")
     }

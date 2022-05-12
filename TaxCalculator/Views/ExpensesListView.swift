@@ -11,20 +11,21 @@ struct ExpensesListView: View {
     
     // MARK: Stored properties
     @Binding var expenses: [Expense]
+    var category: String
     
     // MARK: Computed property
     var body: some View {
         List(expenses) { currentExpense in
             DetailView(expense: currentExpense)
         }
-        .navigationTitle("History")
+        .navigationTitle(category)
     }
 }
 
 struct ExpensesListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ExpensesListView(expenses: .constant([]))
+            ExpensesListView(expenses: .constant([]), category: "Grocery")
         }
     }
 }

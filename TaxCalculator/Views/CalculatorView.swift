@@ -68,11 +68,10 @@ struct CalculatorView: View {
                 Picker(selection: $selectedCategory,
                        label: Text("Category"),
                        content: {
-                    Text("Grocery").tag(0).font(.body)
-                    Text("Clothing").tag(1).font(.body)
-                    Text("Personal Care").tag(2).font(.body)
-                    Text("Education").tag(3).font(.body)
-                    Text("Household").tag(4).font(.body)
+                    ForEach(listOfCategories, id: \.self) { currentCategory in
+                        Text(currentCategory.name).tag(currentCategory)
+                            .font(.body)
+                    }
                 })
                     .pickerStyle(WheelPickerStyle())
                     .frame(width: UIScreen.main.bounds.width - 30, height: 30)
