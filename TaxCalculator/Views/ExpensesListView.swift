@@ -16,7 +16,9 @@ struct ExpensesListView: View {
     // MARK: Computed property
     var body: some View {
         List(expenses) { currentExpense in
-            DetailView(expense: currentExpense)
+            if category == currentExpense.category {
+                DetailView(expense: currentExpense)
+            }
         }
         .navigationTitle(category)
     }

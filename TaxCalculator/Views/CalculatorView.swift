@@ -14,7 +14,7 @@ struct CalculatorView: View {
     @State var selectedProvince: Jurisdiction = Jurisdiction(name: "Ontario",
                                                         combinedTaxRate: 0.13,
                                                         taxDescription: "HST")
-    @State var selectedCategory = ""
+    @State var selectedCategory: Category = Category(name: "Grocery")
     @State var inputPrice = ""
     @State var expenseSaved = false
     @Binding var expenses: [Expense]
@@ -135,7 +135,7 @@ struct CalculatorView: View {
     
     // MARK: Functions
     func saveExpense() {
-        let newExpense = Expense(category: selectedCategory,
+        let newExpense = Expense(category: selectedCategory.name,
                                  date: DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short),
                                  preTaxPrice: preTaxPrice!,
                                  postTaxPrice: postTaxPrice!)
