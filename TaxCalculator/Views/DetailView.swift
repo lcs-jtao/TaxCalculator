@@ -15,8 +15,15 @@ struct DetailView: View {
     // MARK: Computed property
     var body: some View {
         VStack(alignment: .leading) {
-            Text(expense.date)
-                .bold()
+            HStack {
+                Text(expense.date)
+                    .bold()
+                Spacer()
+                Text(expense.category)
+                    .bold()
+                    .font(.subheadline.smallCaps())
+                    .foregroundColor(.gray)
+            }
             Text("Original Price: $\(expense.preTaxPrice, specifier: "%.2f")")
                 .font(.subheadline)
             Text("Price with Tax: $\(expense.postTaxPrice, specifier: "%.2f")")
