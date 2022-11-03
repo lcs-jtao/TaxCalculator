@@ -61,6 +61,7 @@ struct CalculatorView: View {
                     })
                         .pickerStyle(WheelPickerStyle())
                         .frame(width: UIScreen.main.bounds.width - 30, height: 30)
+                        .frame(idealHeight: 10, maxHeight: .infinity)
                         .clipped()
                 }, header : {
                     Text("Select Jurisdiction")
@@ -77,6 +78,7 @@ struct CalculatorView: View {
                     })
                         .pickerStyle(WheelPickerStyle())
                         .frame(width: UIScreen.main.bounds.width - 30, height: 30)
+                        .frame(idealHeight: 10, maxHeight: .infinity)
                         .clipped()
                 }, header: {
                     Text("Select item category")
