@@ -14,13 +14,7 @@ struct Category: Identifiable, Hashable {
 }
 
 let listOfCategories = [
-    Category(name: "Grocery", image: "cart")
+    Category(name: "Necessities", image: "cart")
     ,
-    Category(name: "Clothing", image: "tag")
-    ,
-    Category(name: "Personal Care", image: "eyebrow")
-    ,
-    Category(name: "Education", image: "books.vertical")
-    ,
-    Category(name: "Household", image: "bed.double")
+    Category(name: "Non-Essentials", image: "eyebrow")
 ]

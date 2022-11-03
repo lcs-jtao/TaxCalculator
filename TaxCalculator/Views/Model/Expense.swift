@@ -16,7 +16,7 @@ struct Expense: Identifiable {
     let postTaxPrice: Double
 }
 
-let sampleExpense = Expense(category: "Grocery",
+let sampleExpense = Expense(category: "Necessities",
                             date: DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short),
                             preTaxPrice: 29.99,
                             postTaxPrice: 33.89)

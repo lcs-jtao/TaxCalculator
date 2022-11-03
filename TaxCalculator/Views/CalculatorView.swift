@@ -14,7 +14,7 @@ struct CalculatorView: View {
     @State var selectedProvince: Jurisdiction = Jurisdiction(name: "Ontario",
                                                         combinedTaxRate: 0.13,
                                                         taxDescription: "HST")
-    @State var selectedCategory: Category = Category(name: "Grocery",
+    @State var selectedCategory: Category = Category(name: "Necessities",
                                                      image: "cart")
     @State var inputPrice = ""
     @State var expenseSaved = false
